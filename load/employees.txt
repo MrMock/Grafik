@@ -1,3 +1,7 @@
 28233 Jan Nowak PS 1
 28272 Adam Mickiewicz PS 0,5
 28324 Grzegorz Lalko ZMS 1
+19716 Jan Janowski MS 1
+20251 Karol Taki PS 1
+20463 Jacek Jakiś PS 1
+21329 Dominik Tomaszewski PS 1

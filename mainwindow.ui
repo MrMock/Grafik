@@ -36,7 +36,7 @@
      </size>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab_grafik">
      <attribute name="title">
@@ -129,6 +129,32 @@
         <string>Niedziela</string>
        </property>
       </column>
+     </widget>
+     <widget class="QWidget" name="horizontalLayoutWidget_3">
+      <property name="geometry">
+       <rect>
+        <x>870</x>
+        <y>270</y>
+        <width>311</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="QPushButton" name="pushButton_schedule_save_changes">
+         <property name="text">
+          <string>Zapisz zmiany</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_schedule_undo_changes">
+         <property name="text">
+          <string>Cofnij zmiany</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </widget>
     <widget class="QWidget" name="tab_pracownicy">

@@ -36,6 +36,12 @@ private slots:
 
     void on_lcdNumber_overflow();
 
+    void schedule_draw_empty_slots();
+
+    void on_pushButton_schedule_undo_changes_clicked();
+
+    void on_pushButton_schedule_save_changes_clicked();
+
 private:
     Ui::MainWindow *ui;
     vector <employee> employees;
