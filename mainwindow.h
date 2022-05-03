@@ -42,6 +42,9 @@ private slots:
 
     void on_pushButton_schedule_save_changes_clicked();
 
+    void schedule_read_only();
+
+
 private:
     Ui::MainWindow *ui;
     vector <employee> employees;

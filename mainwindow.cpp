@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+﻿#include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "employee.h"
 
@@ -247,7 +247,7 @@ void MainWindow::schedule_draw()
     QString qstr;
     for(int i = 0; i < schedules.show_size(); i++)
     {
-        for(int j = 0; j < employees.size(); j++)
+        for(unsigned long long j = 0; j < employees.size(); j++)
         {
             if(schedules.show_ID(i) == employees[j].show_employee_ID())
             {
@@ -255,24 +255,31 @@ void MainWindow::schedule_draw()
                 {
 
                     qstr = QString::fromStdString(schedules.show_Mo(i));
+                    if(qstr != "_")
                     ui->tableWidget_schedule->setItem(j, 3, new QTableWidgetItem(qstr));
 
                     qstr = QString::fromStdString(schedules.show_Tu(i));
+                    if(qstr != "_")
                     ui->tableWidget_schedule->setItem(j, 4, new QTableWidgetItem(qstr));
 
                     qstr = QString::fromStdString(schedules.show_We(i));
+                    if(qstr != "_")
                     ui->tableWidget_schedule->setItem(j, 5, new QTableWidgetItem(qstr));
 
                     qstr = QString::fromStdString(schedules.show_Th(i));
+                    if(qstr != "_")
                     ui->tableWidget_schedule->setItem(j, 6, new QTableWidgetItem(qstr));
 
                     qstr = QString::fromStdString(schedules.show_Fr(i));
+                    if(qstr != "_")
                     ui->tableWidget_schedule->setItem(j, 7, new QTableWidgetItem(qstr));
 
                     qstr = QString::fromStdString(schedules.show_Sa(i));
+                    if(qstr != "_")
                     ui->tableWidget_schedule->setItem(j, 8, new QTableWidgetItem(qstr));
 
                     qstr = QString::fromStdString(schedules.show_Su(i));
+                    if(qstr != "_")
                     ui->tableWidget_schedule->setItem(j, 9, new QTableWidgetItem(qstr));
 
 
@@ -280,7 +287,7 @@ void MainWindow::schedule_draw()
             }
         }
     }
-
+    schedule_read_only();
 }
 
 string MainWindow::find_name(string ID){
@@ -305,16 +312,10 @@ void MainWindow::on_calendar_grafik_selectionChanged()
     schedule_draw();
 }
 
-
-void MainWindow::on_lcdNumber_overflow()
-{
-    ui->lcdNumber->value();
-}
-
 void MainWindow::schedule_draw_empty_slots()
 {
     QString qstr;
-    for(int j = 0; j < employees.size(); j++)
+    for(unsigned long long j = 0; j < employees.size(); j++)
     {
             ui->tableWidget_schedule->insertRow ( ui->tableWidget_schedule->rowCount() );
 
@@ -333,6 +334,7 @@ void MainWindow::schedule_draw_empty_slots()
 
 void MainWindow::on_pushButton_schedule_undo_changes_clicked()
 {
+    schedule_load();
     schedule_draw();
 }
 
@@ -341,40 +343,81 @@ void MainWindow::on_pushButton_schedule_save_changes_clicked()
 {
     fstream file;
     QString one_row;
+    QTableWidgetItem *item;
     string file_path;
     QDate selected_date = ui->calendar_grafik->selectedDate();
     int selected_year = selected_date.year();
     int selected_week = selected_date.weekNumber();
+
+    string s_selected_year = to_string(selected_year);
+    string s_selected_week = to_string(selected_week);
+
     file_path += SCHEDULE_FILE_PATH;
-    file_path += selected_week;
+    file_path += s_selected_week;
     file_path += "_";
-    file_path += selected_year;
+    file_path += s_selected_year;
     file_path += ".txt";
 
+    file.open(file_path, ios::out);
     for(int i = 0; i < ui->tableWidget_schedule->rowCount(); i++)
     {
         one_row = "";
-        one_row += ui->tableWidget_schedule->item(i, 0)->text();
+        item = ui->tableWidget_schedule->item(i, 0);
+        if(!item || item->text().isEmpty()) one_row += "_"; else  one_row += ui->tableWidget_schedule->item(i, 0)->text();
         one_row += " ";
-        one_row += ui->tableWidget_schedule->item(i, 3)->text();
-        one_row += " ";
-        one_row += ui->tableWidget_schedule->item(i, 4)->text();
-        one_row += " ";
-        one_row += ui->tableWidget_schedule->item(i, 5)->text();
-        one_row += " ";
-        one_row += ui->tableWidget_schedule->item(i, 6)->text();
-        one_row += " ";
-        one_row += ui->tableWidget_schedule->item(i, 7)->text();
-        one_row += " ";
-        one_row += ui->tableWidget_schedule->item(i, 8)->text();
-        one_row += " ";
-        one_row += ui->tableWidget_schedule->item(i, 9)->text();
 
-        file.open(file_path, ios::out);
+        item = ui->tableWidget_schedule->item(i, 3);
+        if(!item || item->text().isEmpty()) one_row += "_"; else  one_row += ui->tableWidget_schedule->item(i, 3)->text();
+        one_row += " ";
+
+        item = ui->tableWidget_schedule->item(i, 4);
+        if(!item || item->text().isEmpty()) one_row += "_"; else  one_row += ui->tableWidget_schedule->item(i, 4)->text();
+        one_row += " ";
+
+        item = ui->tableWidget_schedule->item(i, 5);
+        if(!item || item->text().isEmpty()) one_row += "_"; else  one_row += ui->tableWidget_schedule->item(i, 5)->text();
+        one_row += " ";
+
+        item = ui->tableWidget_schedule->item(i, 6);
+        if(!item || item->text().isEmpty()) one_row += "_"; else  one_row += ui->tableWidget_schedule->item(i, 6)->text();
+        one_row += " ";
+
+        item = ui->tableWidget_schedule->item(i, 7);
+        if(!item || item->text().isEmpty()) one_row += "_"; else  one_row += ui->tableWidget_schedule->item(i, 7)->text();
+        one_row += " ";
+
+        item = ui->tableWidget_schedule->item(i, 8);
+        if(!item || item->text().isEmpty()) one_row += "_"; else  one_row += ui->tableWidget_schedule->item(i, 8)->text();
+        one_row += " ";
+
+        item = ui->tableWidget_schedule->item(i, 9);
+        if(!item || item->text().isEmpty()) one_row += "_"; else  one_row += ui->tableWidget_schedule->item(i, 9)->text();
+
         if( file.good() )
         {
             file << one_row.toStdString();
         }
-    }
+        if(i < ui->tableWidget_schedule->rowCount()-1)
+            file << endl;
+
+    }       file.close();
+
+    schedule_load();
+    schedule_draw();
 }
 
+void MainWindow::schedule_read_only()
+{
+    QTableWidgetItem *item;
+    for(unsigned long long j = 0; j < employees.size(); j++)
+    {
+        item = ui->tableWidget_schedule->item(j, 0);
+        item->setFlags(item->flags() &  ~Qt::ItemIsEditable);
+
+        item = ui->tableWidget_schedule->item(j, 1);
+        item->setFlags(item->flags() &  ~Qt::ItemIsEditable);
+
+        item = ui->tableWidget_schedule->item(j, 2);
+        item->setFlags(item->flags() &  ~Qt::ItemIsEditable);
+    }
+}
