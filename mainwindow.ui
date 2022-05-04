@@ -266,11 +266,29 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEdit_position">
-         <property name="maxLength">
-          <number>3</number>
-         </property>
-        </widget>
+        <layout class="QVBoxLayout" name="verticalLayout_5">
+         <item>
+          <widget class="QRadioButton" name="radioButton_ps">
+           <property name="text">
+            <string>Pracownik sklepu</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="radioButton_zms">
+           <property name="text">
+            <string>Zastepca managera sklepu</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="radioButton_ms">
+           <property name="text">
+            <string>Manager sklepu</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
        <item>
         <widget class="QLabel" name="label_4">
@@ -280,27 +298,24 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEdit_time">
-         <property name="maximumSize">
-          <size>
-           <width>16777214</width>
-           <height>16777215</height>
-          </size>
+        <widget class="QDoubleSpinBox" name="doubleSpinBox_time">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
          </property>
-         <property name="sizeIncrement">
-          <size>
-           <width>0</width>
-           <height>0</height>
-          </size>
+         <property name="minimum">
+          <double>0.000000000000000</double>
          </property>
-         <property name="focusPolicy">
-          <enum>Qt::WheelFocus</enum>
+         <property name="maximum">
+          <double>1.000000000000000</double>
          </property>
-         <property name="text">
-          <string/>
+         <property name="singleStep">
+          <double>0.050000000000000</double>
          </property>
-         <property name="maxLength">
-          <number>3</number>
+         <property name="value">
+          <double>1.000000000000000</double>
          </property>
         </widget>
        </item>

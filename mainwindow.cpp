@@ -188,15 +188,33 @@ void MainWindow::on_pushButton_add_employee_clicked()
 {
     string name = ui->lineEdit_name->text().toStdString();
     string surname = ui->lineEdit_surname->text().toStdString();
-    string position = ui->lineEdit_position->text().toStdString();
-    string time = ui->lineEdit_time->text().toStdString();
+
+    string position;
+    if(ui->radioButton_ps->isChecked()) position = "PS";
+    else if(ui->radioButton_zms->isChecked()) position = "ZMS";
+    else position = "MS";
+
+    string time = ui->doubleSpinBox_time->text().toStdString();
 
     if(name != "" && surname != "" && position != "" && time != "")
     {
         ui->lineEdit_name->clear();
         ui->lineEdit_surname->clear();
-        ui->lineEdit_position->clear();
-        ui->lineEdit_time->clear();
+
+        ui->radioButton_ms->setAutoExclusive(false);
+        ui->radioButton_ms->setChecked(false);
+        ui->radioButton_ms->setAutoExclusive(true);
+
+
+        ui->radioButton_zms->setAutoExclusive(false);
+        ui->radioButton_zms->setChecked(false);
+        ui->radioButton_zms->setAutoExclusive(true);
+
+        ui->radioButton_ps->setAutoExclusive(false);
+        ui->radioButton_ps->setChecked(false);
+        ui->radioButton_ps->setAutoExclusive(true);
+
+        ui->doubleSpinBox_time->setValue(1);
 
         add_employee(name,surname,position,time);
 
