@@ -12,11 +12,13 @@ SOURCES += \
     employee.cpp \
     main.cpp \
     mainwindow.cpp \
+    request.cpp \
     schedule.cpp
 
 HEADERS += \
     employee.h \
     mainwindow.h \
+    request.h \
     schedule.h
 
 FORMS += \
