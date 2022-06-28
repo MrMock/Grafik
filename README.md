@@ -1,7 +1,7 @@
 # Grafik
 
-kreator do tworzenia grafiku pracy. 
-C++ wraz z QT
+Work schedule managment program. 
+C++, QT
 
 ![image](https://user-images.githubusercontent.com/16858800/175788743-96395234-2c20-4fb6-8556-847619b911fd.png)
 ![image](https://user-images.githubusercontent.com/16858800/175788757-44b69b74-a077-4153-a688-d0650b8951a3.png)
